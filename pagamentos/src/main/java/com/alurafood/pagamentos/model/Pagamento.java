@@ -29,6 +29,10 @@ public class Pagamento {
     private String nome;
 
     @NotBlank
+    @Size(min = 3, max = 10)
+    private String numero;
+
+    @NotBlank
     @Size(max = 7)
     private String expiracao;
 
@@ -36,7 +40,6 @@ public class Pagamento {
     @Size(min = 3, max = 3)
     private String codigo;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -44,6 +47,7 @@ public class Pagamento {
     private Long pedidoId;
 
     @NotNull
+    @Column(name = "forma_de_pagamento_id")
     private Long formaDePagamentosId;
 
 
