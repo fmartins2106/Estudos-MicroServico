@@ -71,6 +71,18 @@ public class PagamentoService {
         pedido.atualizarPagamento(pagamento.get().getPedidoId());
     }
 
+    public void alteraStatusParaAutorizado(Long id){
+        Optional<Pagamento> pagamento = pagamentoRepository.findById(id);
+
+        if (pagamento.isEmpty()) {
+            throw new EntityNotFoundException();
+        }
+
+        pagamento.get().setStatus(Status.CONFIRMADO_SEM_INTEGRACAO);
+        pagamentoRepository.save(pagamento.get());
+    }
+
+
 
 
 
